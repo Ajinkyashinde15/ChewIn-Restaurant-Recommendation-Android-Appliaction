@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Snapr-Team by ucd-nlmsc-teamproject</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Snapr-Team by ucd-nlmsc-teamproject</title>
   </head>
+
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Snapr-Team</h1>
-      <h2 class="project-tagline">Kazeem Ademola; Kulkarni Chitra Nirbhay; Mishra Kushal Bharatbhushan; Nayak Soumyadipta; Shinde Ajinkya Vikas</h2>
-      <a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team" class="btn">View on GitHub</a>
-      <a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <header>
+      <div class="inner">
+        <h1>Snapr-Team</h1>
+        <h2>Kazeem Ademola; Kulkarni Chitra Nirbhay; Mishra Kushal Bharatbhushan; Nayak Soumyadipta; Shinde Ajinkya Vikas</h2>
+        <a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
 
-    <section class="main-content">
-      <h3>
-<a id="the-team" class="anchor" href="#the-team" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Team.</h3>
-
-<p>The team comprises of 5 vibrant ardent backend software developers, UI/UX engineers and testers.
-The application feature development is split accordingly among the team in order to fulfil the Agile Software development process selected for the development of this project.
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><code>### The Team.
+The team comprises of 5 vibrant ardent backend software developers, UI/UX engineers and testers.
+The application feature development is split accordingly among the team in order to fulfil the Agile Software development process selected for the development of this project.</code>````
 A Scrum Master is selected among the team, as well as the Project owner so that we can make the full use of agile Scrum approach. Stand up meeting is held every morning to know what has been done, what needs to be done and what problem any member of team is encountering so others could help.</p>
 
 <h3>
@@ -32,16 +39,20 @@ A Scrum Master is selected among the team, as well as the Project owner so that 
 <p>The basic idea of our project is to develop an app named RestroFinder in which users can snap names of restaurants and get all the required information about the restaurants on the fly. The user is relieved of the stress of having to type the name of the restaurants in order to get information. Our app will help users get details about any restaurant they are interested in. To start up with, initially the user needs to login in our app. User can login using his/her Facebook or Twitter account or he/she can register with us. After logging the user just needs to snap a picture of the restaurant name. This could be carried out while the user is standing in front of the building of the restaurant. The image of the restaurant name will be converted into text. Based on that text we will call some API which in turn will fetch us the details about that restaurant. Details such as the restaurant location, opening time, food menu, restaurant rating and reviews and the cuisines served etc. will be displayed. An alternative option to clicking snap is user can speak out the name of the restaurant. Here using voice recognition an individual’s voice would be converted into text and the same process would be followed. The third option that we are providing is - any user can directly type in the restaurant name in the text field provided and similarly he will get all the details. This option is provided in case if the user’s camera is not working or if the voice is unrecognized then he can directly type in the restaurant name and get the desired details. In addition if the restaurant has some past history i.e. if the restaurant was shut earlier and then restarted due to some reason, then out app will provide those details as well. 
 Below is the demo of how the page would look like:</p>
 
+<p><img src="https://github.com/ucd-nlmsc-teamproject/Snapr-Team/blob/gh-pages/images/demo.png" alt=""></p>
+
 <p>Apart from providing details about any specific restaurant, out app will recommend an individual few other restaurants based on his current location. Initially the recommendations will be based on the users last visited history. For example if the user had last visited any Chinese restaurant then our app will provide him few suggestions of other Chinese restaurant in the location where he is at the moment. Similarly, if the user wants the details of any specific restaurant and he snaps a picture of it; then based on his current location we will recommend him few other restaurants in the nearby vicinity. A list of all restaurants within specific range will be suggested to him.</p>
 
 <h3>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h3>
 
-<p>• User snaps a picture containing the name of a restaurant and get information about the restaurants on the fly
-• User talks to the app and get information about the restaurants on the fly
-• User types in the app and get information about the restaurants on the fly
-• The information maybe cuisines, opening and closing hours, prior closure, reviews etc.
-• Based on user’s restaurants visits (location), other restaurants with similar cuisines etc. within some miles are recommended regularly for the user.</p>
+<ul>
+<li>User snaps a picture containing the name of a restaurant and get information about the restaurants on the fly</li>
+<li>User talks to the app and get information about the restaurants on the fly</li>
+<li>User types in the app and get information about the restaurants on the fly</li>
+<li>The information maybe cuisines, opening and closing hours, prior closure, reviews etc.</li>
+<li>Based on user’s restaurants visits (location), other restaurants with similar cuisines etc. within some miles are recommended regularly for the user.</li>
+</ul>
 
 <h3>
 <a id="how-would-our-app-be-helpful" class="anchor" href="#how-would-our-app-be-helpful" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How would our app be helpful?</h3>
@@ -57,36 +68,55 @@ Below is the demo of how the page would look like:</p>
 <a id="use-case" class="anchor" href="#use-case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use case</h3>
 
 <p>Here there are two actors:
-1.  User – The one who will use the app
-2.  System – Who will do all the backend functioning</p>
+1. User – The one who will use the app
+2. System – Who will do all the backend functioning</p>
 
 <p>All the user needs to do is snap/speak or type the name of the restaurant and all the details pertaining to that restaurant will be presented to him.  The entire functioning will be done by the system at the backend</p>
+
+<p><img src="https://github.com/ucd-nlmsc-teamproject/Snapr-Team/blob/gh-pages/images/usecase.png" alt=""></p>
 
 <h3>
 <a id="data-sources-used" class="anchor" href="#data-sources-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Sources Used</h3>
 
-<p>• Restaurant data collected from Yelp, Zomato and Trip Advisor API
-• Location Information will be displayed using Google API
-• Food and Safety Authority:  Ireland <a href="https://www.fsai.ie/news_centre/press_releases/april_enforcements_09052016.html">https://www.fsai.ie/news_centre/press_releases/april_enforcements_09052016.html</a></p>
+<ul>
+<li>Restaurant data collected from Yelp, Zomato and Trip Advisor API</li>
+<li>Location Information will be displayed using Google API</li>
+<li>Food and Safety Authority:  Ireland <a href="https://www.fsai.ie/news_centre/press_releases/april_enforcements_09052016.html">https://www.fsai.ie/news_centre/press_releases/april_enforcements_09052016.html</a>
+</li>
+</ul>
 
 <h3>
 <a id="technologies-used" class="anchor" href="#technologies-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technologies Used</h3>
 
-<p>In order for us to be able to develop world class application to be used by millions of people, different state-of-the-art technologies have to be adopted and put to use. These include but not limited to:
-• Android
-• Java
-• Oracle Database
-• SDLC-Scrum an Agile framework
-• SDLC tracking tool- Jira
-One of the reasons for SCRUM approach is to allow for change, we might change some technologies and some requirements might be added as the project progresses.</p>
+<p>In order for us to be able to develop world class application to be used by millions of people, different state-of-the-art technologies have to be adopted and put to use. These include but not limited to:</p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team">Snapr-Team</a> is maintained by <a href="https://github.com/ucd-nlmsc-teamproject">ucd-nlmsc-teamproject</a>.</span>
+<ul>
+<li>Android</li>
+<li>Java</li>
+<li>Oracle Database</li>
+<li>SDLC-Scrum an Agile framework</li>
+<li>SDLC tracking tool- Jira</li>
+</ul>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+<p>One of the reasons for SCRUM approach is to allow for change, we might change some technologies and some requirements might be added as the project progresses.</p>
+        </section>
 
-    </section>
+        <aside id="sidebar">
+          <a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ucd-nlmsc-teamproject/Snapr-Team"></a> is maintained by <a href="https://github.com/ucd-nlmsc-teamproject">ucd-nlmsc-teamproject</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
 
   
   </body>
