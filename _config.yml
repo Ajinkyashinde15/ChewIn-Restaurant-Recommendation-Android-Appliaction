@@ -2,7 +2,7 @@
 name:         Snapr-Team
 #tagline:      A responsive theme for your project on GitHub Pages
 tagline:      Kazeem Ademola; Kulkarni Chitra Nirbhay; Mishra Kushal Bharatbhushan; Nayak Soumyadipta; Shinde Ajinkya Vikas
-baseurl:      ""
+baseurl:      "/Snapr-Team"
 
 future:		true
 
