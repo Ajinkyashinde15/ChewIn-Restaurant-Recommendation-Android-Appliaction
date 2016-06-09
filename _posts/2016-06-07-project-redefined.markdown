@@ -44,6 +44,7 @@ We are reviewing three main app namely: Zomato, Yelp and TripAdvisor
 
 
 ## Zomato: 
+
 Out of these apps, Zomato is in our opinion is the best restaurant app we have reviewed. Some of the problems above have been solved by Zomato.
 
 Any individual regardless of age limit can use this app. Our app will be handy for all the food lovers who are fond of trying new cuisines and restaurants or someone who is a frequent traveller.
