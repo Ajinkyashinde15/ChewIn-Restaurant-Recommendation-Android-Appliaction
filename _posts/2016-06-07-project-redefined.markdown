@@ -21,7 +21,6 @@ Every other features remain intact but, we are removing the OCR image conversion
 The application will be used by anyone that want to or like to eat outside, the party goers, lovers who want to treat the love of their lives, visitors to a particular vicinity, the lovers of pubs and nightlives, etc.
 
 
-* User snaps a picture containing the name of a restaurant and get information about the restaurants on the fly
 * User talks to the app and get information about the restaurants on the fly
 * User types in the app and get information about the restaurants on the fly
 * The information maybe cuisines, opening and closing hours, prior closure, reviews etc.
@@ -42,6 +41,7 @@ There are lingering problems that are facing users of this application as expres
 ## Literature Review
 
 We are reviewing three main app namely: Zomato, Yelp and TripAdvisor
+
 ## Zomato: 
 Out of these apps, Zomato is in our opinion is the best restaurant app we have reviewed. Some of the problems above have been solved by Zomato.
 
