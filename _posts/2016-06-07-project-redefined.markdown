@@ -40,7 +40,7 @@ There are lingering problems that are facing users of this application as expres
 
 ## Literature Review
 
-We are reviewing three main app namely: Zomato, Yelp and TripAdvisor
+We are reviewing three main app namely: Zomato, Yelp and TripAdvisor.
 
 
 ##  Zomato: 
