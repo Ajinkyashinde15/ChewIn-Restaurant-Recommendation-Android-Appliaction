@@ -43,7 +43,7 @@ There are lingering problems that are facing users of this application as expres
 We are reviewing three main app namely: Zomato, Yelp and TripAdvisor
 
 
-## Zomato: 
+##  Zomato: 
 
 Out of these apps, Zomato is in our opinion is the best restaurant app we have reviewed. Some of the problems above have been solved by Zomato.
 
