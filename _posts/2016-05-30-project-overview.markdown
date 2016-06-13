@@ -19,7 +19,7 @@ A Scrum Master is selected among the team, as well as the Project owner so that 
 The basic idea of our project is to develop an app named RestroFinder in which users can snap names of restaurants and get all the required information about the restaurants on the fly. The user is relieved of the stress of having to type the name of the restaurants in order to get information. Our app will help users get details about any restaurant they are interested in. To start up with, initially the user needs to login in our app. User can login using his/her Facebook or Twitter account or he/she can register with us. After logging the user just needs to snap a picture of the restaurant name. This could be carried out while the user is standing in front of the building of the restaurant. The image of the restaurant name will be converted into text. Based on that text we will call some API which in turn will fetch us the details about that restaurant. Details such as the restaurant location, opening time, food menu, restaurant rating and reviews and the cuisines served etc. will be displayed. An alternative option to clicking snap is user can speak out the name of the restaurant. Here using voice recognition an individual’s voice would be converted into text and the same process would be followed. The third option that we are providing is - any user can directly type in the restaurant name in the text field provided and similarly he will get all the details. This option is provided in case if the user’s camera is not working or if the voice is unrecognized then he can directly type in the restaurant name and get the desired details. In addition if the restaurant has some past history i.e. if the restaurant was shut earlier and then restarted due to some reason, then out app will provide those details as well. 
 Below is the demo of how the page would look like:
 
-![Sample Interface](images/demo.png)
+![Sample Interface](Snapr-Team/images/demo.png)
 
 Apart from providing details about any specific restaurant, out app will recommend an individual few other restaurants based on his current location. Initially the recommendations will be based on the users last visited history. For example if the user had last visited any Chinese restaurant then our app will provide him few suggestions of other Chinese restaurant in the location where he is at the moment. Similarly, if the user wants the details of any specific restaurant and he snaps a picture of it; then based on his current location we will recommend him few other restaurants in the nearby vicinity. A list of all restaurants within specific range will be suggested to him.
 
@@ -44,7 +44,7 @@ Here there are two actors:
 
 All the user needs to do is snap/speak or type the name of the restaurant and all the details pertaining to that restaurant will be presented to him.  The entire functioning will be done by the system at the backend
 
-![Application's UseCase](images/usecase.png)
+![Application's UseCase](Snapr-Team/images/usecase.png)
 
 ### Data Sources Used
 * Restaurant data collected from Yelp, Zomato and Trip Advisor API
