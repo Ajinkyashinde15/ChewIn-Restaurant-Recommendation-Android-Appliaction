@@ -5,7 +5,6 @@ date:   2016-05-30 2:46:56
 first-name: Kulkarni Chitra Nirbhay
 last-name:  Ademola Kazeem
 ---
-
 Written by: {{ page.first-name }} 
 
 Posted by: {{ page.last-name }} 
