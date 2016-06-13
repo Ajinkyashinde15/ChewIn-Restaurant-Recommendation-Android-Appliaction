@@ -6,8 +6,6 @@ first-name: Kulkarni Chitra Nirbhay
 last-name:  Ademola Kazeem
 ---
 
-The project's idea was born out of getting news based on image snaps and conversion to texts and news are gotten from the search terms. After deliberations it was streamlined to only restaurants.
-
 Written by: {{ page.first-name }} 
 
 Posted by: {{ page.last-name }} 
