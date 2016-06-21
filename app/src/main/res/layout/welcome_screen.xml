@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#f0f0f0">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_y="50dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_x="3dp"
+        android:layout_y="288dp">
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="289dp"
+            android:id="@+id/mainListView"
+            android:divider="#595559"
+            android:dividerHeight="05dp"
+            android:background="#fffcf1"
+            android:smoothScrollbar="true"
+            >
+        </ListView>
+
+    </LinearLayout>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_x="-1dp"
+        android:layout_y="0dp"
+        android:queryHint="Search Cuisine" />
+</AbsoluteLayout>

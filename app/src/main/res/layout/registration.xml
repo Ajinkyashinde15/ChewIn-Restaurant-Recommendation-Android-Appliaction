@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_x="3dp"
+        android:layout_y="20dp"
+        android:text="       Help Us Get to Know You"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="82dp"
+        android:layout_height="38dp"
+        android:layout_x="8dp"
+        android:layout_y="90dp"
+        android:text="DOB"
+        android:textSize="28px"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="199dp"
+        android:layout_y="76dp"
+        android:text="Click Here" />
+
+    <CheckBox
+        android:id="@+id/indian"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="8dp"
+        android:layout_y="199dp"
+        android:text="Indian" />
+
+    <CheckBox
+        android:id="@+id/irish"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="112dp"
+        android:layout_y="201dp"
+        android:text="Irish" />
+
+    <CheckBox
+        android:id="@+id/maxican"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="209dp"
+        android:layout_y="198dp"
+        android:text="Mexican" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="297dp"
+        android:layout_height="38dp"
+        android:layout_x="12dp"
+        android:layout_y="149dp"
+        android:gravity="center"
+        android:text="Cuisine you love"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="32px" />
+
+    <CheckBox
+        android:id="@+id/italian"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="8dp"
+        android:layout_y="236dp"
+        android:text="Italian " />
+
+    <CheckBox
+        android:id="@+id/American"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="112dp"
+        android:layout_y="236dp"
+        android:text="american " />
+
+    <CheckBox
+        android:id="@+id/Spanish"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="209dp"
+        android:layout_y="236dp"
+        android:text="Spanish " />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="82dp"
+        android:layout_height="38dp"
+        android:layout_x="8dp"
+        android:layout_y="297dp"
+        android:gravity="center"
+        android:text="Alcohol"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="28px" />
+
+    <RadioButton
+        android:id="@+id/y"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="111dp"
+        android:layout_y="299dp"
+        android:text="Yes" />
+
+    <RadioButton
+        android:id="@+id/n"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="207dp"
+        android:layout_y="299dp"
+        android:text="No" />
+
+    <CheckBox
+        android:id="@+id/veg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="10dp"
+        android:layout_y="358dp"
+        android:text="Veg" />
+
+    <Button
+        android:id="@+id/submitreg"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_x="85dp"
+        android:layout_y="402dp"
+        android:text="Submit" />
+
+    <CheckBox
+        android:id="@+id/nveg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="116dp"
+        android:layout_y="355dp"
+        android:text="Non Veg" />
+
+</AbsoluteLayout>
