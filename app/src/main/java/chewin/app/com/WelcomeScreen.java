@@ -5,8 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
@@ -20,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.Manifest;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -36,7 +40,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -62,6 +69,7 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
     HashMap<String, ArrayList<String>> multiMapf = new HashMap<String, ArrayList<String>>();
     double longitute;
     double latitude;
+    ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +89,7 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
             if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                Toast.makeText(this, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
             } else {
                 showGPSDisabledAlertToUser();
             }
@@ -186,80 +194,96 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
 
     public void onConnected(Bundle bundle) {
         Location location = null;
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
-        {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        }
-        else
-        {
+        } else {
             // requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-            Toast.makeText(this,"Should ask for the approval/denial here", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Should ask for the approval/denial here", Toast.LENGTH_LONG).show();
         }
 
         //Location location = FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (location == null) {
             FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
-        else {
+        } else {
             handleNewLocation(location);
         }
     }
 
     private void handleNewLocation(Location location) {
-        double currentLatitude = location.getLatitude();
-        double currentLongitude = location.getLongitude();
+        final double currentLatitude = location.getLatitude();
+        final double currentLongitude = location.getLongitude();
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
                 .title("I am here!");
         mMap.addMarker(options);
         float zoomLevel = 10.0f; //This goes up to 21
-        //  mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-        Toast.makeText(WelcomeScreen.this,"Handle new Location = "+location.getLatitude()+" Langi= "+ location.getLongitude(),Toast.LENGTH_SHORT).show();
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        try {
+            mMap.setMyLocationEnabled(true);
+        }catch (Exception e)
+        {}
+        //Toast.makeText(WelcomeScreen.this,"Handle new Location = "+location.getLatitude()+" Langi= "+ location.getLongitude(),Toast.LENGTH_SHORT).show();
         longitute= location.getLongitude();
         latitude=location.getLatitude();
         multiMapf = doInBackground1(longitute,latitude);
 
-        final ListView mainListView = (ListView) findViewById(R.id.mainListView);
-        //String[] hotels = new String[100];
-
-        String[] hotels1 = new String[multiMapf.size()];
+        final String[] hotels1 = new String[multiMapf.size()];
         int i = 0;
         for (String key : multiMapf.keySet()) {
             hotels1[i++] = key.toString();
         }
 
+        final Bitmap[] imageId = new Bitmap[multiMapf.size()];
         int j = 0;
-
-        ArrayList<String> hotelList = new ArrayList<String>();
-        for (int i1 = 0; i1 < hotels1.length; i1++) {
-            hotelList.add(hotels1[i1]);
+        for (String key : multiMapf.keySet()) {
+            try {
+                ArrayList<String> a = new ArrayList<String>();
+                URL newurl = new URL(a.get(1));
+                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                imageId[j++] = mIcon_val;
+            }catch (Exception e)
+            {}
         }
 
-        listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, R.id.rowTextView, hotelList);
-        // Add more planets. If you passed a String[] instead of a List<String>
-        // into the ArrayAdapter constructor, you must not add more items.
-        // Otherwise an exception will occur.
+        final String[] rank1 = new String[multiMapf.size()];
+        i = 0;
+        for (String key : multiMapf.keySet()) {
+            ArrayList<String> a=multiMapf.get(key);
+            rank1[i++] = a.get(4);
+        }
 
-        // Set the ArrayAdapter as the ListView's adapter.
-        mainListView.setAdapter(listAdapter);
+        final String[] textrank = new String[multiMapf.size()];
+        i = 0;
+        for (String key : multiMapf.keySet()) {
+            ArrayList<String> a = multiMapf.get(key);
+            textrank[i++] = a.get(9);
+        }
 
-        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        CustomList adapter = new CustomList(WelcomeScreen.this, hotels1, imageId,rank1,textrank);
+        list=(ListView)findViewById(R.id.mainListView);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(WelcomeScreen.this, "You Clicked at " +hotels1[+ position], Toast.LENGTH_SHORT).show();
                 String stringText;
 
-                //in normal case
-                //stringText = ((TextView) view).getText().toString();
+                ArrayList<String> a=multiMapf.get(hotels1[+ position]);
+                //Toast.makeText(WelcomeScreen.this, " Lan " + a.get(4) + " Lat= " + a.get(5), Toast.LENGTH_LONG).show();
 
-                //in case if listview has separate item layout
-                TextView textview = (TextView) view.findViewById(R.id.rowTextView);
-                stringText = textview.getText().toString();
-                ArrayList<String> a = multiMapf.get(stringText);
-                //show selected
-                Toast.makeText(WelcomeScreen.this, stringText + " Lan " + a.get(2) + " Lat= " + a.get(3), Toast.LENGTH_LONG).show();
+                Intent i=new Intent(WelcomeScreen.this,OneRestaurant.class);
+                i.putExtra("hashmapdetails", a);
+                i.putExtra("restname", hotels1[+ position]);
+                i.putExtra("currentlat", String.valueOf(currentLatitude));
+                i.putExtra("currentlong",String.valueOf(currentLongitude));
+                startActivity(i);
             }
         });
 
@@ -276,6 +300,8 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
 
         Log.d("Location= "+ TAG, location.toString());
     }
+
+
     @Override
     public void onConnectionSuspended(int i) {
         Log.i(TAG, "Location services suspended. Please reconnect.");
@@ -357,23 +383,31 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
                 JSONObject rs = jsonObject.getJSONObject("restaurant");
                 String name=rs.optString("name").toString();
                 String cuisines = rs.optString("cuisines").toString();
-                String purl =rs.optString("photos_url").toString();
+                String purl =rs.optString("thumb").toString();
+                String phone_numbers=rs.optString("phone_numbers").toString();
+                String rurl=rs.optString("url").toString();
 
                 JSONObject location = rs.getJSONObject("location");
                 String latit1=location.optString("latitude").toString();
                 String longi =location.optString("longitude").toString();
+                String address =location.optString("address").toString();
 
-                //JSONObject rating = rs.getJSONObject("user_rating");
-                //String aggregate_rating=rating.optString("aggregate_rating").toString();
-                //String rating_text=rating.optString("rating_text").toString();
+                JSONObject rating = rs.getJSONObject("user_rating");
+                String aggregate_rating=rating.optString("aggregate_rating").toString();
+                String votes=rating.optString("votes").toString();
+                String rating_text=rating.optString("rating_text").toString();
 
                 ArrayList<String> rst=new ArrayList<String>();
-                rst.add(cuisines);
-                rst.add(purl);
-                rst.add(latit1);
-                rst.add(longi);
-                //rst.add(aggregate_rating);
-                //rst.add(rating_text);
+                rst.add(cuisines);  //0
+                rst.add(purl);  //1
+                rst.add(latit1);  //2
+                rst.add(longi);  //3
+                rst.add(aggregate_rating);  //4
+                rst.add(votes);  //5
+                rst.add(address);  //6
+                rst.add(phone_numbers);  //7
+                rst.add(rurl);  //8
+                rst.add(rating_text);  //9
 
                 multiMap.put(name, rst);
 

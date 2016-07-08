@@ -24,9 +24,11 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.google.android.gms:play-services:9.0.2'
     compile 'com.github.asne.facebook:facebook:3.17.2'
     compile 'com.android.support:design:23.2.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.roughike:bottom-bar:1.4.0'
 }

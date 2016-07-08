@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent" android:layout_height="match_parent">
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rowTextView"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dp"
-    android:textSize="16sp"
-    android:height="45dp">
-</TextView>
-</LinearLayout>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_x="96dp"
+            android:text="name"
+            android:layout_y="0dp"
+            android:gravity="left"
+            android:textSize="20dp"/>
+
+
+        <TextView
+            android:id="@+id/rat"
+            android:layout_width="123dp"
+            android:text="rating"
+            android:layout_x="273dp"
+            android:layout_y="62dp"
+            android:gravity="left"
+            android:layout_height="wrap_content"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/ratxt"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:text="rattext"
+            android:layout_x="100dp"
+            android:layout_y="58dp"
+            android:gravity="left"
+            android:textSize="20dp" />
+
+</AbsoluteLayout>

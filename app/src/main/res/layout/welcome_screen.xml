@@ -17,15 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_x="3dp"
-        android:layout_y="288dp">
+        android:layout_y="288dp"
+        android:weightSum="1">
         <ListView android:layout_width="fill_parent"
-            android:layout_height="289dp"
+            android:layout_height="match_parent"
             android:id="@+id/mainListView"
             android:divider="#595559"
             android:dividerHeight="05dp"
             android:background="#fffcf1"
-            android:smoothScrollbar="true"
-            >
+            android:smoothScrollbar="true">
         </ListView>
 
     </LinearLayout>

@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bb_menu_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/bb_menu_bookmark"
+        android:icon="@drawable/ic_bookmark"
+        android:title="Bookmark" />
+    <item
+        android:id="@+id/bb_menu_checkin"
+        android:icon="@drawable/ic_checkin"
+        android:title="ChekIn" />
+    <item
+        android:id="@+id/bb_menu_rating"
+        android:icon="@drawable/ic_rating"
+        android:title="Ratings" />
+</menu>

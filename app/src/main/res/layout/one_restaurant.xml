@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <FrameLayout  android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="370px"
+            android:id="@+id/restoimage"
+         />
+    </FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Resto Name"
+        android:id="@+id/rsname"
+        android:textSize="70px"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_x="15dp"
+        android:layout_y="175dp" />
+
+    <RatingBar
+        android:id="@+id/rtbProductRating"
+        android:layout_height="wrap_content"
+        android:layout_width="103dp"
+        android:numStars="5"
+        android:isIndicator="false"
+        style="@style/foodRatingBar"
+        android:layout_x="15dp"
+        android:layout_y="232dp" />
+
+    <TextView
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="85"
+        android:textSize="42px"
+        android:id="@+id/reviewtext"
+        android:layout_x="130dp"
+        android:layout_y="230dp" />
+
+    <TextView
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="distance"
+        android:textSize="42px"
+        android:id="@+id/distance"
+        android:layout_x="243dp"
+        android:layout_y="230dp"
+        android:background="#5f797a6f" />
+
+    <TextView
+        android:layout_width="359dp"
+        android:layout_height="54dp"
+        android:text="cuisuine"
+        android:textSize="52px"
+        android:id="@+id/cuisuine"
+        android:layout_x="13dp"
+        android:gravity="center"
+        android:background="@drawable/back"
+        android:layout_y="265dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/restinfo"
+        android:id="@+id/imageView"
+        android:layout_x="-1dp"
+        android:layout_y="320dp" />
+
+    <ImageView
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/mapimage"
+        android:background="@drawable/mapicon"
+        android:layout_x="6dp"
+        android:layout_y="384dp" />
+
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:id="@+id/callimage"
+        android:background="@drawable/call"
+        android:layout_x="6dp"
+        android:layout_y="440dp" />
+
+    <ImageView
+        android:layout_width="70px"
+        android:layout_height="70px"
+        android:id="@+id/webimage"
+        android:background="@drawable/web"
+        android:layout_x="15dp"
+        android:layout_y="500dp" />
+
+    <ImageView
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/mailimage"
+        android:background="@drawable/email"
+        android:layout_x="12dp"
+        android:layout_y="550dp" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Address Test"
+        android:id="@+id/addressText"
+        android:layout_x="69dp"
+        android:layout_y="378dp"
+        android:textSize="50px" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000"
+        android:layout_x="0dp"
+        android:layout_y="432dp" />
+
+    <TextView
+        android:layout_width="630px"
+        android:layout_height="60dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Phone No"
+        android:id="@+id/callText"
+        android:layout_x="72dp"
+        android:layout_y="446dp"
+        android:textSize="50px" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000"
+        android:layout_x="0dp"
+        android:layout_y="492dp" />
+
+    <TextView
+        android:layout_width="630px"
+        android:layout_height="60dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Visit Website"
+        android:id="@+id/webtext"
+        android:layout_x="72dp"
+        android:layout_y="500dp"
+        android:textSize="50px" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000"
+        android:layout_x="0dp"
+        android:layout_y="550dp" />
+
+    <TextView
+        android:layout_width="630px"
+        android:layout_height="60dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email Address"
+        android:id="@+id/emailText"
+        android:layout_x="72dp"
+        android:layout_y="555dp"
+        android:textSize="50px" />
+
+    <ImageButton
+        android:layout_width="78dp"
+        android:layout_height="55dp"
+        android:id="@+id/googleMapButton"
+        android:layout_x="286dp"
+        android:background="@drawable/gmapicon"
+        android:layout_y="376dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true" />
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/myCoordinator"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fitsSystemWindows="true">
+
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/myScrollingContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Your loooong scrolling content here -->
+
+</android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
+ </AbsoluteLayout>
+</ScrollView>

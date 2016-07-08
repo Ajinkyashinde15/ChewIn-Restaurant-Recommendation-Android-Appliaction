@@ -73,10 +73,10 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/23.3.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.3.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.asne.facebook/facebook/3.17.2/jars" />
@@ -124,6 +124,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/9.0.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.0.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.0.2/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.roughike/bottom-bar/1.4.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
@@ -146,7 +147,7 @@
     <orderEntry type="library" exported="" name="play-services-ads-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-fitness-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-9.0.2" level="project" />
-    <orderEntry type="library" exported="" name="design-23.2.1" level="project" />
+    <orderEntry type="library" exported="" name="bottom-bar-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-drive-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="firebase-crash-9.0.2" level="project" />
@@ -178,9 +179,10 @@
     <orderEntry type="library" exported="" name="play-services-auth-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-9.0.2" level="project" />
-    <orderEntry type="library" exported="" name="recyclerview-v7-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-storage-common-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-24.0.0" level="project" />
+    <orderEntry type="library" exported="" name="recyclerview-v7-23.3.0" level="project" />
+    <orderEntry type="library" exported="" name="design-23.3.0" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-database-connection-9.0.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-gcm-9.0.2" level="project" />

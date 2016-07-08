@@ -38,6 +38,8 @@
         </activity>
         <activity android:name=".Registration"></activity>
         <activity android:name=".WelcomeScreen"></activity>
+        <activity android:name=".OneRestaurant"></activity>
+        <activity android:name=".UserRatings"></activity>
 
     </application>
 
