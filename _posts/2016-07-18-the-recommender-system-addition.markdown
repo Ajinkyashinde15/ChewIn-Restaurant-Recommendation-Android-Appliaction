@@ -12,8 +12,6 @@ Posted by: {{ page.last-name }}
 ### The Overview.
 
 The key features of our app are the recommender system and the menu based search. Therefore, our major focus was on recommender system and we have successfully implemented that feature. Users are recommended restaurants based on their history and on the restaurant they Check In. Hence, we have completed the Bookmark and Check In feature in parallel to the recommender system.
-The development of our application had two important features that needed to be implemented (i) Recommendation of restaurants (ii) menu search of the restaurants. Apart from these two main features we had other features that was in our product backlog like (i) bookmark feature of restaurants (ii) rating feature 
-Of the above features, we were able to successfully implement the recommendation features, the bookmark, check-in and Facebook login feature in the last sprint. Our last sprint also had a task of collecting the menus of restaurants manually by calling different restaurants or visiting their restaurants. This task has been carried over to the next sprint due to the large volume of the restaurants.
 
 ### The Recommender System.
 
