@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#f0f0f0">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_x="3dp"
+        android:layout_y="75dp"
+        android:weightSum="1">
+
+        <ListView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainListViewbookmark"
+            android:divider="#595559"
+            android:dividerHeight="05dp"
+            android:background="#fffcf1"
+            android:smoothScrollbar="true"
+            android:layout_x="-17dp"
+            android:layout_y="45dp">
+        </ListView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="              BookMark List"
+        android:id="@+id/textView115"
+        android:layout_x="-8dp"
+        android:layout_y="15dp"
+        android:textSize="30dp"
+        android:textAlignment="center"/>
+
+</AbsoluteLayout>

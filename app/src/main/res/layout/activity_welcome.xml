@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <chewin.app.com.GifView
+        android:id="@+id/gif_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+   <!-- <TextView
+        android:id="@+id/textinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info..." />-->
+
+
+    <!-- Start Sharing too-->
+    <!--
+    <com.facebook.login.widget.ProfilePictureView
+        android:id="@+id/picture"
+
+        android:layout_marginTop="20dp"
+        android:layout_width="200sp"
+        android:layout_height="200sp"/>
+
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+
+        android:layout_marginLeft="200dp"
+        android:layout_toRightOf="@+id/picture"/>
+    <Button
+        android:id="@+id/details"
+        android:text="Show details"
+        android:layout_below="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_toRightOf="@+id/picture"
+        android:layout_marginTop="70dp"
+        />
+    <Button
+        android:id="@+id/share"
+        android:text="Share"
+        android:layout_below="@+id/details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="200dp"
+        android:layout_toRightOf="@+id/picture"/>
+    -->
+<!-- End Sharing too-->
+
+
+
+
+
+    <!--android:textColor="@android:color/white"-->
+
+   <!-- <LinearLayout
+        android:id="@+id/containerr"
+        android:layout_width="match_parent"
+        android:layout_height="234dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dots_margin_bottom"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_gravity="center_horizontal|top">-->
+
+
+
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_marginTop="10dp"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sign_in_button"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_weight="0.07" />
+
+       <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_marginTop="10dp"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_button"
+        android:layout_gravity="center" />
+
+
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:text="@string/skip"
+        android:layout_gravity="bottom"
+        />
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>

@@ -1,7 +1,10 @@
 package chewin.app.com;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -31,12 +34,19 @@ public class OneRestaurant extends Activity
     TextView rsname,reviewtext,distance,cuisuine,addressText,callText,webtext,emailText;
     ImageButton googleMapButton;
     ImageView restoimage;
+    DBHelper dbhelp;
+    SQLiteDatabase db;
+    Cursor c;
+
     private BottomBar mBottomBar;
     int count=0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_restaurant);
+
+        dbhelp=new DBHelper(getApplicationContext(), "restaurant", null,1);
+        db=dbhelp.getWritableDatabase();
 
         rtbProductRating=(RatingBar)findViewById(R.id.rtbProductRating);
         rsname=(TextView)findViewById(R.id.rsname);
@@ -144,11 +154,31 @@ public class OneRestaurant extends Activity
                         count++;
                     }
                 }
-                if (menuItemId == R.id.bb_menu_bookmark) {
+                if (menuItemId == R.id.bb_menu_bookmark)
+                {
+
+                    ContentValues cv= new ContentValues();
+
+                    cv.put("username", "demo");
+                    cv.put("restaurant_name",restname);
+                    cv.put("latitude", hashmap.get(2));
+                    cv.put("longitude", hashmap.get(3));
+
+                    db.insert("bookmark", null, cv);
+
                     Toast.makeText(getApplicationContext(), "Bookmark has been saved ", Toast.LENGTH_SHORT).show();
                     count++;
                 }
                 if (menuItemId == R.id.bb_menu_checkin) {
+
+                    ContentValues cv= new ContentValues();
+
+                    cv.put("username", "demo");
+                    cv.put("restaurant_name",restname);
+                    cv.put("latitude", hashmap.get(2));
+                    cv.put("longitude", hashmap.get(3));
+                    db.insert("checkin", null, cv);
+
                     Toast.makeText(getApplicationContext(), "Post on facebook", Toast.LENGTH_SHORT).show();
                     count++;
                 }

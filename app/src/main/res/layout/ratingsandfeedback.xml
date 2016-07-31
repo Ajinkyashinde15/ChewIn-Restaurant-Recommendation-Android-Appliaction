@@ -40,7 +40,7 @@
         android:id="@+id/ratingBaruserrating"
         android:rating="5"
         android:paddingLeft="75dp"
-        android:stepSize="1" />
+        android:stepSize="0.5" />
 
     <TextView
         android:layout_width="wrap_content"

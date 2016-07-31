@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+
+    <TextView
+        android:id="@+id/bookmarkname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_x="12dp"
+        android:text="name"
+        android:layout_y="05dp"
+        android:gravity="left"
+        android:textSize="23dp"
+        android:textColor="#040404" />
+
+
+</AbsoluteLayout>

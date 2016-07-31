@@ -27,12 +27,12 @@ import android.support.v7.widget.Toolbar;
 public class UserRatings extends AppCompatActivity {
      ArrayList<String> hashmap;
     String clatitude,clongitude,restname;
-    Button submit;
+    Button buttonrating;
     EditText editTextfeedback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.feedbackandratings);
+        setContentView(R.layout.ratingsandfeedback);
  //       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setTitle("User Ratings");
         // etc...
@@ -47,9 +47,9 @@ public class UserRatings extends AppCompatActivity {
         clongitude = intent.getStringExtra("currentlong");
         restname = intent.getStringExtra("restname");
 
-        submit = (Button) findViewById(R.id.buttonrating);
+        buttonrating = (Button) findViewById(R.id.buttonrating);
         editTextfeedback=(EditText)findViewById(R.id.editTextfeedback);
-        submit.setOnClickListener(new View.OnClickListener() {
+        buttonrating.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

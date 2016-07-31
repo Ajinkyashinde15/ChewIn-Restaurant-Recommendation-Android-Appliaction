@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "413424496473",
+    "project_id": "chewinapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413424496473:android:f8da78c13c0aea38",
+        "android_client_info": {
+          "package_name": "chewin.app.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413424496473-vppdofnokv5cg3iqgmn10lc32u7l6dea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "chewin.app.com",
+            "certificate_hash": "DBE737EFF79A81A149C94F724B895CAEDFD47424"
+          }
+        },
+        {
+          "client_id": "413424496473-eb4gm956lltvkok2v2lqc4fe2mi1bcb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgRLy65Mn8x8VW2B-TaZcB_cFyqOiMb-k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

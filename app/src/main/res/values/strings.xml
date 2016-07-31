@@ -3,4 +3,35 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_filter">filter</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="button_send">Send</string>
+    <string name="edit_message">Enter a Message</string>
+
+    <string name="button_show_tip">Show Bills and Tips</string>
+
+
+    <!--Welcome Screen-->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP LOGIN</string>
+    <string name="start">GOT IT</string>
+ <!--End Welcome Screen-->
+
+    <!--For google plus-->
+    <!-- Button labels -->
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+    <!--End For google plus-->
+
+
+    <!--fb-->
+    <string name="facebook_app_id">643349532484031</string>
+    <string name="fb_sign_out">FB Sign Out</string>
+    <string name="title_activity_splash">Splash</string>
+    <!--end fb-->
+
 </resources>

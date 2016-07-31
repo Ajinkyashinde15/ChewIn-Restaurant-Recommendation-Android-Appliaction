@@ -10,20 +10,31 @@ import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.Manifest;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -36,6 +47,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.plus.Plus;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,9 +57,11 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,9 +69,9 @@ import java.util.HashMap;
 
 import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
-public class WelcomeScreen extends android.support.v4.app.FragmentActivity implements
+public class WelcomeScreen extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, LocationListener {
+        GoogleApiClient.OnConnectionFailedListener, LocationListener, NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private GoogleApiClient mGoogleApiClient;
@@ -71,10 +86,146 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
     double latitude;
     ListView list;
 
+
+    //Ademola Kazeem
+    private ImageView dp;
+    private TextView username, email, dob, gender;
+    private GoogleApiClient googleApiClient;
+    private boolean fbLogged;
+
+    //End Ademola Kazeem
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //AK GooglePlus
+        buidNewGoogleApiClient();
+        //End AK GooglePlus
+
+
+        //setContentView(R.layout.activity_main);
         setContentView(R.layout.welcome_screen);
+
+
+       // final String rDp, rUsername, rEmail, rDob, rGender;
+        //Intent recieveDataIntent = getIntent();
+        //rUsername = recieveDataIntent.getStringExtra("P_NAME");
+        //rGender = recieveDataIntent.getStringExtra("P_GENDER");
+       // rDp = recieveDataIntent.getStringExtra("P_PHOTOURL");
+        //Log.d("Username text", rUsername);
+       // Log.d("Gender text", rGender);
+        //Log.d("url", rDp);
+
+
+
+        //AK Liogin
+        NavigationView nView = (NavigationView) findViewById(R.id.nav_view);
+        View headerLayout = nView.getHeaderView(0);
+        //View view = findViewById(R.id.drawer_layout);
+        dp = (ImageView) headerLayout.findViewById(R.id.profile_pic);
+        username  = (TextView) headerLayout.findViewById(R.id.userName);
+        //dp = (ImageView) findViewById(R.id.profile_pic);
+        //email = (TextView) findViewById(R.id.emailId);
+        //username = (TextView) findViewById(R.id.userName);
+        //dob = (TextView) findViewById(R.id.dob);
+        //gender = (TextView) findViewById(R.id.gender);
+
+
+        //Get the intent from the Welcome Activity
+        Intent recieveDataIntent = getIntent();
+        final String rDp, rUsername, rEmail, rDob, rGender;
+        String fbfalse = recieveDataIntent.getStringExtra("FBFALSE");
+        String gplusfalse = recieveDataIntent.getStringExtra("GPLUSFALSE");
+        //&& recieveDataIntent.getStringExtra("GPLUSTRUE").equals("TRUE")
+        if ((fbfalse != null && fbfalse.equalsIgnoreCase("FALSE"))) {
+            rDp = recieveDataIntent.getStringExtra("P_PHOTOURL");
+            //rAgeRange = recieveDataIntent.getStringExtra("P_AGE_RANGE");
+            rUsername = recieveDataIntent.getStringExtra("P_NAME");
+            rEmail = recieveDataIntent.getStringExtra("P_EMAIL");
+            rDob = recieveDataIntent.getStringExtra("P_DOB");
+            //rGender = recieveDataIntent.getStringExtra("P_GENDER");
+
+            fbLogged = false;
+
+            //email.setText(rEmail);
+           username.setText(rUsername);
+            //dob.setText(rDob);
+            //gender.setText(rGender);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        URL url = new URL(rDp);
+                        InputStream inputStream = url.openConnection().getInputStream();
+                        final Bitmap urlBitmap = BitmapFactory.decodeStream(inputStream);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dp.setImageBitmap(urlBitmap);
+                            }
+                        });
+
+
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        } else if (gplusfalse != null && gplusfalse.equalsIgnoreCase("FALSE")) {
+
+
+            rDp = recieveDataIntent.getStringExtra("P_PHOTOURL");
+            //rAgeRange = recieveDataIntent.getStringExtra("P_AGE_RANGE");
+            String fbId = recieveDataIntent.getStringExtra("FBID");
+            rUsername = recieveDataIntent.getStringExtra("P_NAME");
+            rEmail = recieveDataIntent.getStringExtra("P_EMAIL");
+            rDob = recieveDataIntent.getStringExtra("P_DOB");
+            //rGender = recieveDataIntent.getStringExtra("P_GENDER");
+
+            fbLogged = true;
+
+            //email.setText(rEmail);
+            username.setText(rUsername);
+            //dob.setText(rDob);
+            //gender.setText(rGender);
+            String imageurl = "https://graph.facebook.com/" + fbId + "/picture?type=large";
+            Picasso.with(WelcomeScreen.this).load(imageurl).into(dp);
+
+
+        }
+        /*//fb
+        (findViewById(R.id.sign_out_menu)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //if (AccessToken.getCurrentAccessToken() != null) {
+                if (fbLogged == true) {
+                    LoginManager.getInstance().logOut();
+                    Log.d("logout", "I am login out now");
+
+                    Intent intent = new Intent(WelcomeScreen.this, WelcomeActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Successfully Signed out!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                if (fbLogged == false) {
+                    gPlusSignOut();
+                }
+            }
+            //}
+        });*/
+        //end fb
+
+
+        //End AK Login
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         try {
 
@@ -89,7 +240,7 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
             if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-               // Toast.makeText(this, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
             } else {
                 showGPSDisabledAlertToUser();
             }
@@ -109,6 +260,85 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
             e.printStackTrace();
             Log.i(TAG, "Location services connection failed with code " + e.getMessage());
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+            // Bundle b = new Bundle();
+
+            Intent intent = new Intent(WelcomeScreen.this, BookmarkList.class);
+            intent.putExtra("class", "bookmark");
+            startActivity(intent);
+
+        } else if (id == R.id.nav_slideshow) {
+
+            Intent intent = new Intent(WelcomeScreen.this, CheckInList.class);
+            intent.putExtra("class", "checkin");
+            startActivity(intent);
+
+        } else if (id == R.id.nav_manage) {
+            Intent i = new Intent("chewin.navigationbarchewin.FILTER");
+            startActivity(i);
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        } else if (id == R.id.edit_profile) {
+
+        } else if (id == R.id.sign_out_menu) {
+
+            (findViewById(R.id.sign_out_menu)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //if (AccessToken.getCurrentAccessToken() != null) {
+                    if (fbLogged == true) {
+                        LoginManager.getInstance().logOut();
+                        Log.d("logout", "I am login out now");
+
+                        Intent intent = new Intent(WelcomeScreen.this, WelcomeActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Successfully Signed out!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    if (fbLogged == false) {
+                        gPlusSignOut();
+                    }
+                }
+                //}
+            });
+
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     @Override
@@ -149,21 +379,6 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
         alert.show();
     }
 
-    /**
-     * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
-     * installed) and the map has not already been instantiated.. This will ensure that we only ever
-     * call {@link (HashMap)} once when {@link #mMap} is not null.
-     * <p/>
-     * If it isn't installed {@link SupportMapFragment} (and
-     * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
-     * install/update the Google Play services APK on their device.
-     * <p/>
-     * A user can return to this FragmentActivity after following the prompt and correctly
-     * installing/updating/enabling the Google Play services. Since the FragmentActivity may not
-     * have been completely destroyed during this process (it is likely that it would only be
-     * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
-     * method in {@link #onResume()} to guarantee that it will be called.
-     */
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
@@ -176,15 +391,6 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
             }
         }
     }
-
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     * @param
-     */
-
 
     private void setUpMap() {
 
@@ -201,12 +407,32 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
             Toast.makeText(this, "Should ask for the approval/denial here", Toast.LENGTH_LONG).show();
         }
 
+
+
+
+
         //Location location = FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (location == null) {
-            FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        } else {
-            handleNewLocation(location);
+        int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            if (location == null) {
+                FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+            } else {
+                handleNewLocation(location);
+            }
+            //End Location = FusedLocationApi
         }
+
+
+
+        //int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
+
+        //if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            //Execute location service call if user has explicitly granted ACCESS_FINE_LOCATION..
+        //}
+
+
+
+
     }
 
     private void handleNewLocation(Location location) {
@@ -223,9 +449,26 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
         mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         mMap.getUiSettings().setZoomControlsEnabled(true);
         try {
+
+            //AK Fix
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            //End AK Fix
             mMap.setMyLocationEnabled(true);
+
+
         }catch (Exception e)
-        {}
+        {
+
+        }
         //Toast.makeText(WelcomeScreen.this,"Handle new Location = "+location.getLatitude()+" Langi= "+ location.getLongitude(),Toast.LENGTH_SHORT).show();
         longitute= location.getLongitude();
         latitude=location.getLatitude();
@@ -424,4 +667,38 @@ public class WelcomeScreen extends android.support.v4.app.FragmentActivity imple
         }
         return multiMap;
     }
+
+
+
+
+
+
+    //AK Logins
+    private void buidNewGoogleApiClient(){
+
+        googleApiClient =  new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Plus.API,Plus.PlusOptions.builder().build())
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .build();
+    }
+    public void signOutNow(View view) {
+        gPlusSignOut();
+
+    }
+
+    private void gPlusSignOut() {
+        googleApiClient.disconnect();
+        googleApiClient.connect();
+        Log.i("Logged out", "Sign out Done");
+        Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
+        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Successfully signed out of chewIn", Toast.LENGTH_SHORT).show();
+        finish();
+   }
+
+
+    //End AK Logins
+
 }
