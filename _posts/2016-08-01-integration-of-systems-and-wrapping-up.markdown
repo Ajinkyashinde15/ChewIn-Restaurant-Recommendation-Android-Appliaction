@@ -34,26 +34,26 @@ To create PostgreSQL objects, command lines needs to be used in order to create 
 ## Python Daemon Script.
 Zomato provided APIs for developers to use in order not to reinvent the wheel. On regular basis, the company provides updates on all the data provided through the API. So, in order for us to have the latest data available on our server, a python script was written that goes back to the Zomato API every week to fetch the most recent data and add it to our data, while updating any changes from the last fetch. 
 
-![Command line](/Snapr-Team/images/whole.ng)
+![Command line](/Snapr-Team/images/whole.png)
 
 ## Challenges with Running the Script.
 
 After developing the python script, we faced the huddle of making it run on the server as it worked perfectly on the laptop and was able to connect to the database on the laptop. Running the script on the server was a different ball game entirely. The reason was because Ubuntu 14.04.1 has many python versions installed.
 
-![Command line](/Snapr-Team/images/challenges1.ng)
+![Command line](/Snapr-Team/images/challenges1.png)
 
 As shown in the diagram above, there is python2.7, python3.4 and python 3 installed on the server which the operating system itself uses for its daily activities, so once you do pip install for all the modules in the application. For instance, we made use of psycopg2 module for database connection, pandas module for CSV and requests module. 
 
 The solution was to install Virtualenv, Virtualenv is package that allow developers to install virtual python. This enable the developer to make use of their custom-installed python to run their scripts.
 
-![Command line](/Snapr-Team/images/challenges2.ng)
+![Command line](/Snapr-Team/images/challenges2.png)
 
 ## Challenges with Scheduling.
 
 After crossing the huddle of running the script, the next of action was to schedule the script to run at a particular interval. There are a view options available for us. We could make use of the Crontab by scheduling the Cron jobs, the use of Celery and the use Cron and Celery. 
 Eventually, we settled for the use of Crontab because it comes with Operating system, and limited work had to be done in order to get it done. It is also more reliable than some frameworks like celery that we had to learn well before implementation considering the limited time we have at our disposal to wrap the project up.
 
-![Command line](/Snapr-Team/images/cron.ng)
+![Command line](/Snapr-Team/images/cron.png)
 
 At the moment, we set the Cron Job to run every day at 18:45, which would be changed soon once we decide how many times we want to update our data within a month.
 
@@ -65,17 +65,17 @@ As mentioned in the previous posts, these two important features have been integ
 
 In the last Demo, we were unable to show all the splash screen, login page and the navigation drawer consisting of the user profile pictures gotten from Facebook or Googleplus because it was located and developed by another member of the team and was not integrated yet. Now we have them seamlessly integrated into android app developed.
 
-![Screenshot](/Snapr-Team/images/Splash.ng)
+![Screenshot](/Snapr-Team/images/Splash.png)
 
-![Screenshot](/Snapr-Team/images/Login.ng)
+![Screenshot](/Snapr-Team/images/Login.png)
 
-![Screenshot](/Snapr-Team/images/LoggedInFB.ng)
+![Screenshot](/Snapr-Team/images/LoggedInFB.png)
 
-![Screenshot](/Snapr-Team/images/LogginFB1.ng)
+![Screenshot](/Snapr-Team/images/LogginFB1.png)
 
-![Screenshot](/Snapr-Team/images/LogginFB2.ng)
+![Screenshot](/Snapr-Team/images/LogginFB2.png)
 
-![Screenshot](/Snapr-Team/images/LoggedInGP.ng)
+![Screenshot](/Snapr-Team/images/LoggedInGP.png)
 
 ## Next on the Agenda.
 
