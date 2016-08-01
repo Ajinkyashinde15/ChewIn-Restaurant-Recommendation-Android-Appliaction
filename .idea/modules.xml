@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ChewIn.iml" filepath="$PROJECT_DIR$/ChewIn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Snapr-Team.iml" filepath="$PROJECT_DIR$/Snapr-Team.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

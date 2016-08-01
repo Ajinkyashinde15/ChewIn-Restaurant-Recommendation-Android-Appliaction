@@ -311,6 +311,43 @@ public class WelcomeScreen extends AppCompatActivity implements
 
         } else if (id == R.id.edit_profile) {
 
+
+            /*
+
+             Intent sendDataIntent = new Intent(WelcomeActivity.this, WelcomeScreen.class);
+                        name = json.getString("name");
+                        email = json.getString("email");
+                        dob = json.getString("birthday");
+                       gender = json.getString("gender");
+                       String fbId = json.getString("id");
+
+                        Log.d("name", name);
+                        Log.d("email", email);
+
+                        sendDataIntent.putExtra(P_NAME, name);
+                        sendDataIntent.putExtra(P_EMAIL, email);
+                        sendDataIntent.putExtra(P_DOB, dob);
+                        sendDataIntent.putExtra(P_GENDER, gender);
+
+                        sendDataIntent.putExtra("FBID", fbId);
+                        sendDataIntent.putExtra(GPLUSFALSE, "FALSE");
+                        sendDataIntent.putExtra(FBTRUE, "TRUE");
+
+                        //sendDataIntent.putExtra(P_PHOTOURL, dpUrl);
+                        startActivity(sendDataIntent);
+             */
+
+
+            Intent intent = new Intent(this, UserEditActivity.class);
+            startActivity(intent);
+
+
+
+
+
+
+
+
         } else if (id == R.id.sign_out_menu) {
 
             (findViewById(R.id.sign_out_menu)).setOnClickListener(new View.OnClickListener() {

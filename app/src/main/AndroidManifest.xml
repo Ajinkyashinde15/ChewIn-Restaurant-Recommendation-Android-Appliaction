@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="chewin.app.com" >
+    package="chewin.app.com">
 
-    <!--Ademola Kazeem-->
+    <!-- Ademola Kazeem -->
     <!-- For google plus -->
     <!-- To access internet -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,14 +11,16 @@
     <!-- To use account credentials -->
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <!-- End for google plus -->
-    <!--End Ademola Kazeem-->
+    <!-- End Ademola Kazeem -->
 
-<!--    <uses-permission android:name="android.permission.INTERNET" />-->
+
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-    <!-- Required to show current location -
+    <!--
+ Required to show current location -
 
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
@@ -26,33 +28,29 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-       <!-- <meta-data
+        <!--
+            <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyA6i_sWNmnPv-sHO5EKsMJMXcB_e6rZSqA" />-->
+            android:value="AIzaSyA6i_sWNmnPv-sHO5EKsMJMXcB_e6rZSqA" />
+        -->
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCiHLg6zRx9vMO_fmdhXXNkrE0YzAm_Y_E" />
 
-
-
-
-        <activity android:name=".Registration"></activity>
-        <activity android:name=".WelcomeScreen"></activity>
-        <activity android:name=".OneRestaurant"></activity>
-        <activity android:name=".UserRatings"></activity>
-        <activity android:name=".CheckInList"></activity>
-
-
+        <activity android:name=".Registration" />
+        <activity android:name=".WelcomeScreen" />
+        <activity android:name=".OneRestaurant" />
+        <activity android:name=".UserRatings" />
+        <activity android:name=".CheckInList" />
         <activity
             android:name=".filter"
             android:label="@string/title_activity_filter"
@@ -63,15 +61,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".BookmarkList">
             <intent-filter>
                 <action android:name="chewin.navigationbarchewin.BOOKMARK" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:hardwareAccelerated="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -86,16 +84,13 @@
             <!-- For google plus -->
 
         </activity>
-
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-
 
         <!-- FacebookActivity Added -->
 
@@ -109,10 +104,12 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <provider android:authorities="com.facebook.app.FacebookContentProvider643349532484031"
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider643349532484031"
+            android:exported="true" />
 
+        <activity android:name=".UserEditActivity"></activity>
     </application>
 
 </manifest>

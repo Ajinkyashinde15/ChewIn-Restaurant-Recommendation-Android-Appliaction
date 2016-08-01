@@ -19,7 +19,7 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP LOGIN</string>
     <string name="start">GOT IT</string>
- <!--End Welcome Screen-->
+    <!--End Welcome Screen-->
 
     <!--For google plus-->
     <!-- Button labels -->
@@ -33,5 +33,12 @@
     <string name="fb_sign_out">FB Sign Out</string>
     <string name="title_activity_splash">Splash</string>
     <!--end fb-->
+
+     <string-array name="gender_array">
+            <item>Male</item>
+            <item>Female</item>
+
+     </string-array>
+
 
 </resources>
