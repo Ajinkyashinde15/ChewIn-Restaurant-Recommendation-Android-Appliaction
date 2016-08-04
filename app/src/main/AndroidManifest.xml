@@ -109,7 +109,16 @@
             android:authorities="com.facebook.app.FacebookContentProvider643349532484031"
             android:exported="true" />
 
-        <activity android:name=".UserEditActivity"></activity>
+        <activity android:name=".UserEditActivity" />
+        <activity
+            android:name=".PostToFaceBook"
+            android:label="@string/title_activity_post_to_face_book"
+            android:parentActivityName=".WelcomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="chewin.app.com.WelcomeScreen" />
+        </activity>
     </application>
 
 </manifest>

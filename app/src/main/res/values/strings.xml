@@ -34,11 +34,12 @@
     <string name="title_activity_splash">Splash</string>
     <!--end fb-->
 
-     <string-array name="gender_array">
-            <item>Male</item>
-            <item>Female</item>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
 
-     </string-array>
+    </string-array>
+    <string name="title_activity_post_to_face_book">PostToFaceBook</string>
 
 
 </resources>

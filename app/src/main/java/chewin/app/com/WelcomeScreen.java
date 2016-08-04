@@ -24,6 +24,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,8 +70,7 @@ import java.util.HashMap;
 
 import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
-public class WelcomeScreen extends AppCompatActivity implements
-        GoogleApiClient.ConnectionCallbacks,
+public class WelcomeScreen extends AppCompatActivity implements    GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener, NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
@@ -92,6 +92,8 @@ public class WelcomeScreen extends AppCompatActivity implements
     private TextView username, email, dob, gender;
     private GoogleApiClient googleApiClient;
     private boolean fbLogged;
+    private PrefManager prefManager;
+
 
     //End Ademola Kazeem
 
@@ -102,19 +104,17 @@ public class WelcomeScreen extends AppCompatActivity implements
         //AK GooglePlus
         buidNewGoogleApiClient();
         //End AK GooglePlus
-
-
         //setContentView(R.layout.activity_main);
         setContentView(R.layout.welcome_screen);
 
 
-       // final String rDp, rUsername, rEmail, rDob, rGender;
+        // final String rDp, rUsername, rEmail, rDob, rGender;
         //Intent recieveDataIntent = getIntent();
         //rUsername = recieveDataIntent.getStringExtra("P_NAME");
         //rGender = recieveDataIntent.getStringExtra("P_GENDER");
-       // rDp = recieveDataIntent.getStringExtra("P_PHOTOURL");
+        // rDp = recieveDataIntent.getStringExtra("P_PHOTOURL");
         //Log.d("Username text", rUsername);
-       // Log.d("Gender text", rGender);
+        // Log.d("Gender text", rGender);
         //Log.d("url", rDp);
 
 
@@ -134,6 +134,30 @@ public class WelcomeScreen extends AppCompatActivity implements
 
         //Get the intent from the Welcome Activity
         Intent recieveDataIntent = getIntent();
+        if(recieveDataIntent.getExtras() == null){
+            username.setText("...Your food on the menu");
+        }
+
+        // get menu from navigationView
+        Menu menu = nView.getMenu();
+        // find MenuItem you want to change
+        MenuItem navSignInOut = menu.findItem(R.id.sign_out_menu);
+        MenuItem navEditProfile = menu.findItem(R.id.edit_profile);
+
+        //Intent recieveDataIntent = getIntent();
+        if(recieveDataIntent.getExtras()== null){
+            // set new title to the MenuItem
+            navSignInOut.setTitle("Log in");
+            navEditProfile.setVisible(false);
+
+        }
+        else if(recieveDataIntent.getExtras() != null){
+            navSignInOut.setTitle("Sign Out");
+            navEditProfile.setVisible(true);
+        }
+
+
+
         final String rDp, rUsername, rEmail, rDob, rGender;
         String fbfalse = recieveDataIntent.getStringExtra("FBFALSE");
         String gplusfalse = recieveDataIntent.getStringExtra("GPLUSFALSE");
@@ -149,7 +173,7 @@ public class WelcomeScreen extends AppCompatActivity implements
             fbLogged = false;
 
             //email.setText(rEmail);
-           username.setText(rUsername);
+            username.setText(rUsername);
             //dob.setText(rDob);
             //gender.setText(rGender);
 
@@ -282,7 +306,7 @@ public class WelcomeScreen extends AppCompatActivity implements
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(final MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -306,6 +330,8 @@ public class WelcomeScreen extends AppCompatActivity implements
             startActivity(i);
 
         } else if (id == R.id.nav_share) {
+            Intent shareIntent = new Intent(WelcomeScreen.this, PostToFaceBook.class);
+            startActivity(shareIntent);
 
         } else if (id == R.id.nav_send) {
 
@@ -338,6 +364,7 @@ public class WelcomeScreen extends AppCompatActivity implements
              */
 
 
+
             Intent intent = new Intent(this, UserEditActivity.class);
             startActivity(intent);
 
@@ -350,26 +377,47 @@ public class WelcomeScreen extends AppCompatActivity implements
 
         } else if (id == R.id.sign_out_menu) {
 
-            (findViewById(R.id.sign_out_menu)).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //if (AccessToken.getCurrentAccessToken() != null) {
-                    if (fbLogged == true) {
-                        LoginManager.getInstance().logOut();
-                        Log.d("logout", "I am login out now");
+            Intent recieveDataIntent = getIntent();
+            //NavigationView nView = (NavigationView) findViewById(R.id.nav_view);
+            // get menu from navigationView
+            //Menu menu = nView.getMenu();
+            // find MenuItem you want to change
+            //final MenuItem navSignInOut = menu.findItem(R.id.sign_out_menu);
+            //navSignInOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            //   @Override
+            //   public boolean onMenuItemClick(MenuItem menuItem) {
 
-                        Intent intent = new Intent(WelcomeScreen.this, WelcomeActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(getApplicationContext(), "Successfully Signed out!", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                    if (fbLogged == false) {
-                        gPlusSignOut();
-                    }
+
+            if(recieveDataIntent.getExtras() == null){
+
+                prefManager = new PrefManager(this);
+                prefManager.setFirstTimeLaunch(true);
+                Intent getOutIntent = new Intent(WelcomeScreen.this, WelcomeActivity.class);
+                startActivity(getOutIntent);
+                finish();
+
+            }
+            //else if(recieveDataIntent.getExtras()!= null){
+            else if(recieveDataIntent.getExtras() != null){
+
+                //if (AccessToken.getCurrentAccessToken() != null) {
+                if (fbLogged == true) {
+                    LoginManager.getInstance().logOut();
+                    Log.d("logout", "I am login out now");
+
+                    Intent intent = new Intent(WelcomeScreen.this, WelcomeActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Successfully Signed out!", Toast.LENGTH_SHORT).show();
+                    finish();
+
                 }
-                //}
-            });
+                else if (fbLogged == false) {
+                    gPlusSignOut();
+                }
 
+            }//end else if
+            //return false;
+            //  }
 
         }
 
@@ -464,7 +512,7 @@ public class WelcomeScreen extends AppCompatActivity implements
         //int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
 
         //if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-            //Execute location service call if user has explicitly granted ACCESS_FINE_LOCATION..
+        //Execute location service call if user has explicitly granted ACCESS_FINE_LOCATION..
         //}
 
 
@@ -733,7 +781,8 @@ public class WelcomeScreen extends AppCompatActivity implements
         startActivity(intent);
         Toast.makeText(getApplicationContext(), "Successfully signed out of chewIn", Toast.LENGTH_SHORT).show();
         finish();
-   }
+
+    }
 
 
     //End AK Logins
