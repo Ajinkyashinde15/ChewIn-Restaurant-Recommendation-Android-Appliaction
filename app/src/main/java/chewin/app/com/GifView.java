@@ -11,8 +11,8 @@ import android.view.View;
 
 public class GifView extends View{
 
-	private InputStream gifInputStream;
-	private Movie gifMovie;
+	private InputStream gifInputStream; //Create an instance of InputStream
+	private Movie gifMovie;	//Crate Movie object
 	private int movieWidth, movieHeight;
 	private long movieDuration;
 	private long movieStart;
@@ -23,12 +23,12 @@ public class GifView extends View{
 	}
 
 	
-	public GifView(Context context, AttributeSet attrs) {
+	public GifView(Context context, AttributeSet attrs) { //Define constructor
 		super(context, attrs);
 		init(context);
 	}
 	
-	public GifView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public GifView(Context context, AttributeSet attrs, int defStyleAttr) {  //Define constructor
 		super(context, attrs, defStyleAttr);
 		init(context);
 	}
@@ -37,8 +37,8 @@ public class GifView extends View{
 		setFocusable(true);
 		gifInputStream = context.getResources().openRawResource(R.raw.foodie);
 		
-		gifMovie = Movie.decodeStream(gifInputStream);
-		movieWidth = gifMovie.width();
+		gifMovie = Movie.decodeStream(gifInputStream);  //Decode stream value to gifMovie variable
+		movieWidth = gifMovie.width();    //Set width
 		movieHeight = gifMovie.height();
 		movieDuration = gifMovie.duration();
 	}
@@ -76,9 +76,9 @@ public class GifView extends View{
 				dur = 1000;
 			}
 			
-			int relTime = (int)((now - movieStart) % dur);
+			int relTime = (int)((now - movieStart) % dur);  //Calculate splashscreen time
 			
-			gifMovie.setTime(relTime);
+			gifMovie.setTime(relTime);	 //Set splashscreen time
 			
 			gifMovie.draw(canvas, 0, 0);
 			invalidate();

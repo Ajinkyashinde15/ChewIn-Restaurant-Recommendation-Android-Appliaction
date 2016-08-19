@@ -4,49 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Minimum User Rating"
-        android:id="@+id/button3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:numStars="3"
-        android:rating="3" />
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar2"
-        android:layout_below="@+id/ratingBar"
-        android:layout_centerHorizontal="true"
-        android:numStars="4"
-        android:rating="4" />
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar3"
-        android:layout_below="@+id/ratingBar2"
-        android:layout_centerHorizontal="true"
-        android:numStars="5"
-        android:rating="5" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cusines"
-        android:id="@+id/button4"
-        android:layout_marginTop="69dp"
-        android:layout_below="@+id/ratingBar3"
-        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -54,9 +11,9 @@
         android:text="Indian"
         android:id="@+id/checkBox"
         android:checked="false"
-        android:layout_below="@+id/button4"
-        android:layout_toLeftOf="@+id/ratingBar"
-        android:layout_toStartOf="@+id/ratingBar" />
+        android:layout_alignTop="@+id/checkBox2"
+        android:layout_toRightOf="@+id/textView19"
+        android:layout_toEndOf="@+id/textView19" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -64,9 +21,10 @@
         android:text="Italian"
         android:id="@+id/checkBox2"
         android:checked="false"
-        android:layout_below="@+id/checkBox"
-        android:layout_toLeftOf="@+id/ratingBar"
-        android:layout_toStartOf="@+id/ratingBar" />
+        android:layout_above="@+id/textView18"
+        android:layout_toLeftOf="@+id/radioButton"
+        android:layout_toStartOf="@+id/radioButton"
+        android:layout_marginBottom="80dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -74,17 +32,75 @@
         android:text="French"
         android:id="@+id/checkBox3"
         android:checked="false"
-        android:layout_below="@+id/button4"
-        android:layout_alignRight="@+id/ratingBar"
-        android:layout_alignEnd="@+id/ratingBar" />
+        android:layout_above="@+id/checkBox2"
+        android:layout_alignLeft="@+id/checkBox2"
+        android:layout_alignStart="@+id/checkBox2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/button9"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Minimum Rating"
+        android:id="@+id/textView18"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 Star"
+        android:id="@+id/radioButton"
+        android:layout_below="@+id/textView18"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 Star"
+        android:id="@+id/radioButton2"
+        android:layout_below="@+id/radioButton"
+        android:layout_alignLeft="@+id/checkBox2"
+        android:layout_alignStart="@+id/checkBox2"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 Star"
+        android:id="@+id/radioButton3"
+        android:checked="false"
+        android:layout_alignTop="@+id/radioButton2"
+        android:layout_toRightOf="@+id/button9"
+        android:layout_toEndOf="@+id/button9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cusines"
+        android:id="@+id/textView19"
+        android:layout_above="@+id/checkBox3"
+        android:layout_toRightOf="@+id/radioButton2"
+        android:layout_toEndOf="@+id/radioButton2" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chinese"
         android:id="@+id/checkBox4"
-        android:checked="false"
-        android:layout_below="@+id/checkBox3"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3" />
+        android:layout_below="@+id/textView19"
+        android:layout_toRightOf="@+id/textView19"
+        android:layout_toEndOf="@+id/textView19"
+        android:checked="false" />
+
 </RelativeLayout>

@@ -1,13 +1,10 @@
 package chewin.app.com;
 
-/**
- * Created by Kushal on 13-Jul-16.
- */
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapter extends FragmentStatePagerAdapter { //Create a class for showuing tab
     int mNumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
@@ -20,11 +17,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                TabFragment1 tab1 = new TabFragment1();
-                return tab1;
+                TabFragment1 tab1 = new TabFragment1();  //Add TabFragment 1 tab
+                return tab1;    //return tab1 view;
             case 1:
-                TabFragment2 tab2 = new TabFragment2();
-                return tab2;
+
 
             default:
                 return null;

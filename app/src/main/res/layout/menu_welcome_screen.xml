@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f0f0f0">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="278dp"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_y="05dp"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="?attr/colorPrimary">
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="405dp"
+        android:layout_x="1dp"
+        android:layout_y="284dp"
+        android:weightSum="1">
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="381dp"
+            android:id="@+id/mainListView"
+            android:divider="#595559"
+            android:dividerHeight="05dp"
+            android:background="#fffcf1"
+            android:smoothScrollbar="true"
+            android:layout_weight="1.08">
+        </ListView>
+
+    </LinearLayout>
+
+</AbsoluteLayout>

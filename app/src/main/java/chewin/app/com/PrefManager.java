@@ -3,9 +3,7 @@ package chewin.app.com;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Ademola Kazeem on 6/27/2016.
- */
+
 public class PrefManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -13,8 +11,10 @@ public class PrefManager {
     // shared pref mode
     int PRIVATE_MODE = 0;
     // Shared preferences file name
-    private static final String PREF_NAME = "chewin-welcome";
-    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+
+    private static final String PREF_NAME = "verdeinfotech-welcome";  //Set preference name
+
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";  //set value for String IS_FIRST_TIME_LAUNCH
 
     public PrefManager(Context context) {
         this._context = context;

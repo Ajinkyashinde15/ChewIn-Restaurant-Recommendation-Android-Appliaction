@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="?attr/colorPrimary">
+    </android.support.v7.widget.Toolbar>
+
+    <!-- Layout for content is here. This can be a RelativeLayout  -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="      Rate this Application"
+        android:id="@+id/textView20"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        android:textColor="#000000"
+        android:layout_gravity="top"
+        android:textSize="36dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/textView1"
+        android:textSize="36dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="              Users Rating"
+        android:id="@+id/textView"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        android:textColor="#000000"
+        android:layout_gravity="right"
+        android:textSize="32dp" />
+
+    <RatingBar
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingbarapp"
+        android:rating="5"
+        android:paddingLeft="75dp"
+        android:paddingTop="15dp"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/textView4"
+        android:textSize="36dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="            Users Feeback"
+        android:id="@+id/userfeedback"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_gravity="right"
+        android:textSize="32dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editTextfeedbackapp"
+        android:layout_weight="0.52"
+        android:hint="Type Here"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/textView3"
+        android:textSize="36dp" />
+
+    <Button
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/buttonratingsubmitapp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.11" />
+</LinearLayout>

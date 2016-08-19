@@ -1,15 +1,19 @@
 package chewin.app.com;
 
-        import android.os.Bundle;
-        import android.support.design.widget.TabLayout;
-        import android.support.v4.view.ViewPager;
-        import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
-        import android.view.Menu;
-        import android.view.MenuItem;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import chewin.app.com.PagerAdapter;
+import chewin.app.com.R;
 
 
-public class filter extends AppCompatActivity {
+public class filter extends AppCompatActivity {//Create class filter to filter data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +22,18 @@ public class filter extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Distance"));
-        tabLayout.addTab(tabLayout.newTab().setText("Rating & Cusines"));
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout); //Create an instance of TabLayout
+        tabLayout.addTab(tabLayout.newTab().setText("Distance")); //Add table layout called Distance
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager); //Find view Page
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapter);//Set Adapter
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {  //Create an abstract method setOnTabSelectedListener
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+            public void onTabSelected(TabLayout.Tab tab) {  //Implement methos
                 viewPager.setCurrentItem(tab.getPosition());
             }
 
@@ -44,6 +47,7 @@ public class filter extends AppCompatActivity {
 
             }
         });
+
     }
 
     @Override
@@ -61,4 +65,5 @@ public class filter extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

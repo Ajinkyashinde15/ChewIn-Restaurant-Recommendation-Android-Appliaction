@@ -2,16 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="chewin.app.com">
 
-    <!-- Ademola Kazeem -->
     <!-- For google plus -->
     <!-- To access internet -->
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- To access accounts configured on device -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <!-- To use account credentials -->
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <!-- End for google plus -->
-    <!-- End Ademola Kazeem -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
 
 
     <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
@@ -39,18 +40,22 @@
         <!--
             <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyA6i_sWNmnPv-sHO5EKsMJMXcB_e6rZSqA" />
+            android:value="AIzaSyCiHLg6zRx9vMO_fmdhXXNkrE0YzAm_Y_E" />
         -->
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCiHLg6zRx9vMO_fmdhXXNkrE0YzAm_Y_E" />
+            android:value="AIzaSyBpgQ0k7v_cLPM0EhG5PLc2w7aSZBsjPOU" />
 
         <activity android:name=".Registration" />
-        <activity android:name=".WelcomeScreen" />
+        <activity android:name=".WelcomeScreen" android:noHistory="true"
+            android:finishOnTaskLaunch="true"/>
         <activity android:name=".OneRestaurant" />
         <activity android:name=".UserRatings" />
+        <activity android:name=".MenuSearch" android:label="Menu Search" />
         <activity android:name=".CheckInList" />
+        <activity android:name=".UserAppRatings" />
+
         <activity
             android:name=".filter"
             android:label="@string/title_activity_filter"
@@ -84,16 +89,39 @@
             <!-- For google plus -->
 
         </activity>
+
+        <activity android:name=".WelcomeScreenLogin"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- FacebookActivity Added -->
+        <!--        <activity android:name=".WelcomeScreenLogin"
+                 >
+                            <intent-filter>
+                                <action android:name="android.intent.action.MAIN" />
 
+                                <category android:name="android.intent.category.LAUNCHER" />
+                            </intent-filter>
+                        </activity>
+        -->
+        <!--<activity android:name=".feedback">
+           <intent-filter>
+               <action android:name="android.intent.action.FEEDBACK" />
+
+               <category android:name="android.intent.category.DEFAULT" />
+           </intent-filter>
+       </activity>
+       -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -109,11 +137,9 @@
             android:authorities="com.facebook.app.FacebookContentProvider643349532484031"
             android:exported="true" />
 
-        <activity android:name=".UserEditActivity" />
         <activity
             android:name=".PostToFaceBook"
             android:label="@string/title_activity_post_to_face_book"
-            android:parentActivityName=".WelcomeScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

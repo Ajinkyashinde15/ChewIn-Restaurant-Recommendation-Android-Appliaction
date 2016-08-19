@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.media.MediaPlayer;
@@ -63,15 +64,100 @@ import com.google.android.gms.plus.model.people.Person;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.*;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.facebook.login.LoginManager;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.LocationSource;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.plus.Plus;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
+//Welcome activity after splash screen (facebook and google plus)
 public class WelcomeActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
-    /*private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
-    private LinearLayout dotsLayout;
-    */
+    //Initialize variables
     private TextView[] dots;
     //private int[] layouts;
     private Button btnSkip;
@@ -84,7 +170,7 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
     private static final int REQUEST_CODE_LOGIN = 10;
     private static final String P_NAME = "P_NAME";
     private static final String P_EMAIL = "P_EMAIL";
-    private static final String P_DOB = "P_DOB";
+   // private static final String P_DOB = "P_DOB";
     private static final String P_GENDER = "P_GENDER";
     private static final String P_PHOTOURL = "P_PHOTOURL";
     private static final String FBTRUE = "FBTRUE";
@@ -92,21 +178,17 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
     private static  final String GPLUSFALSE = "GPLUSFALSE";
     private static  final String GPLUSTRUE = "GPLUSTRUE";
     private boolean isFbBtnClicked = false;
+    SharedPreferences sharedPreferences;
+
     //Start video declaration
-    //TextView textViewInfo;
     GifView gifView;
     //end video declaration
 
 
-       //end Google plus
-
-
-    //end google plus login
 
     //fb
     private CallbackManager callbackManager = null;
     private LoginButton fbLoginButton;
-
 
     //new fb
 
@@ -126,64 +208,19 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
             //fb
         initializeFacebookSDK();
         //end fb
-
+         sharedPreferences=getSharedPreferences("loginusersdetails",Context.MODE_PRIVATE);
         //Checking for first time launch - before calling setContentView()
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
-            finish();
-        }
+
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
-
-
         setContentView(R.layout.activity_welcome);
-
-
-         //*******************************background***************************************************
+        //*******************************background***************************************************
          gifView = (GifView) findViewById(R.id.gif_view);
-         //textViewInfo = (TextView) findViewById(R.id.textinfo);
-         //String stringInfo = "";
-         //stringInfo += "Duration: " + gifView.getMovieDuration() + "\n";
-         //stringInfo += "W x H: " + gifView.getMovieWidth() + " x " + gifView.getMovieHeight() + "\n";
-         //textViewInfo.setText(stringInfo);
-
-
-
-         //Display display = this.getWindowManager().getDefaultDisplay();
-         //Point size = new Point();
-         //display.getSize(size);
-         //int screenWidth = size.x;
-
-
-         //Get the width of the screen
-         //DisplayMetrics displaymetrics = new DisplayMetrics();
-         //this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-         //int screenWidth = displaymetrics.widthPixels;
-
-
-
-         // Point size = new Point();
-         //getWindowManager().getDefaultDisplay().getSize(size);
-         // int screenWidth = size.x;
-         //int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-         //Log.d("testing gLayout", "before GifView getLayoutParams");
-         //Get the SurfaceView layout parameters
-         //android.view.ViewGroup.LayoutParams lp = gifView.getLayoutParams();
-         //Set the width of the SurfaceView to the width of the screen
-         //lp.width = screenWidth;
-         //Set the height of the SurfaceView to match the aspect ratio of the video
-         //be sure to cast these as floats otherwise the calculation will likely be 0
-         //lp.height = (int) (((float)gifView.getMovieHeight() / (float)gifView.getMovieWidth()) * (float)screenWidth);
-         //Commit the layout parameters
-         //gifView.setLayoutParams(lp);
          //*******************************End background*********************************************
-
-
         //*******************************Skip********************************************************
        // viewPager = (ViewPager) findViewById(R.id.view_pager);
         //dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -201,16 +238,23 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
         buildGPlus();
         custimizeGPlusFbSignBtn();
         setBtnClickListeners();
+       //**************************End google plus login*******************************************
 
-         /*signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(loginIntent, REQUEST_CODE_LOGIN);
+         prefManager = new PrefManager(this);
+         if (!prefManager.isFirstTimeLaunch() && AccessToken.getCurrentAccessToken() == null) {
+             Log.d("Skip Login", "Skip Login part so go to WelcomeScreen");
+             launchHomeScreen();
+             finish();
+         }
+         if (!prefManager.isFirstTimeLaunch() && AccessToken.getCurrentAccessToken() != null) {
+             Log.d("Facebook", "The Facebook is logged in. So go to WelcomeScreenLogin");
+             RequestFacebookData();
+             //Intent intnt = new Intent(WelcomeActivity.this, WelcomeScreenLogin.class);
+             //intnt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+             //startActivity(intnt);
+             //finish();
+         }
 
-            }
-        });*/
-         //**************************End google plus login*******************************************
 
     }//**********end onCreate
 
@@ -246,11 +290,11 @@ protected void initializeFacebookSDK(){
         // Button listeners
         signInButton.setOnClickListener(this);
         fbLoginButton.setOnClickListener(this);
-        //findViewById(R.id.login_button).setOnClickListener(this);
-        //findViewById(R.id.sign_in_button).setOnClickListener((View.OnClickListener) this);
     }
 
     //@Override
+
+    //Define on Click method
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sign_in_button:
@@ -267,6 +311,7 @@ protected void initializeFacebookSDK(){
         }
     }
 
+    //If user choose sign with facebook
     private void facebookSignIn() {
 
         //fb
@@ -278,7 +323,7 @@ protected void initializeFacebookSDK(){
         share = (Button)findViewById(R.id.share);
         details = (Button)findViewById(R.id.details);
         */
-        fbLoginButton.setReadPermissions("public_profile email user_birthday");
+        fbLoginButton.setReadPermissions("public_profile email");
 
         /*share.setVisibility(View.INVISIBLE);
         details.setVisibility(View.INVISIBLE);
@@ -350,8 +395,6 @@ protected void initializeFacebookSDK(){
     //end conditional FB/Google plus
 
 
-
-
     //new new fb
 
     private void custimizeGPlusFbSignBtn(){
@@ -374,7 +417,10 @@ protected void initializeFacebookSDK(){
             public void onCompleted(JSONObject object, GraphResponse response) {
 
                 JSONObject json = response.getJSONObject();
-                String name, dpUrl, email, dob, gender;
+                final String[] name = new String[1];
+                String dpUrl = null;
+                final String email;
+                final String gender;
                 try {
                     if(json != null){
 
@@ -384,28 +430,124 @@ protected void initializeFacebookSDK(){
                         //details_txt.setText(Html.fromHtml(text));
                         //profilePic.setProfileId(json.getString("id"));
 
-
-                        Intent sendDataIntent = new Intent(WelcomeActivity.this, WelcomeScreen.class);
-                        name = json.getString("name");
+                        //Set SharedPreferences variables
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        name[0] = json.getString("name");
+                        editor.putString("username", name[0]);
                         email = json.getString("email");
-                        dob = json.getString("birthday");
+                       // dob = json.getString("birthday");
                        gender = json.getString("gender");
                        String fbId = json.getString("id");
+                        dpUrl = "https://graph.facebook.com/" + fbId + "/picture?type=large";
 
-                        Log.d("name", name);
+                        //Print Logcat with name and email
+                        Log.d("name", name[0]);
                         Log.d("email", email);
 
-                        sendDataIntent.putExtra(P_NAME, name);
-                        sendDataIntent.putExtra(P_EMAIL, email);
-                        sendDataIntent.putExtra(P_DOB, dob);
-                        sendDataIntent.putExtra(P_GENDER, gender);
 
-                        sendDataIntent.putExtra("FBID", fbId);
-                        sendDataIntent.putExtra(GPLUSFALSE, "FALSE");
-                        sendDataIntent.putExtra(FBTRUE, "TRUE");
+                        //start existing user
+                        final String finalDpUrl = dpUrl;
+                        new Thread(new Runnable() {
+                            public void run() {
 
-                        //sendDataIntent.putExtra(P_PHOTOURL, dpUrl);
-                        startActivity(sendDataIntent);
+                                try{
+                                    //android welcomeActivity
+
+                                    //Check for existing user
+                                    Log.d("Run the server", "Before runing the server REST");
+
+                                    URL url1 = new URL("http://137.43.93.134:8080/MS.SNAPR.RS/AndroidServlet");
+
+                                    URLConnection connection1 = url1.openConnection();
+                                    connection1.setDoOutput(true);
+                                    name[0] =email.substring(0,email.indexOf('@'));
+
+                                    Uri.Builder builder = new Uri.Builder()
+                                            .appendQueryParameter("username", name[0]);
+                                    String query1 = builder.build().getEncodedQuery();
+
+                                    //Read acknowledgement fromm server
+                                    OutputStream os1 = connection1.getOutputStream();
+                                    BufferedWriter writer1 = new BufferedWriter( new OutputStreamWriter(os1, "UTF-8"));
+                                    writer1.write(query1);
+                                    writer1.flush();
+                                    writer1.close();
+
+                                    BufferedReader in1 = new BufferedReader(new InputStreamReader(connection1.getInputStream()));
+
+                                    String returnString1="";
+                                    String feedback1=null;
+
+                                    //Get feedback from server
+                                    while ((returnString1 = in1.readLine()) != null)
+                                    {
+                                        feedback1= returnString1;
+                                    }
+                                    in1.close();
+
+                                    //Check - if return value is Yes then user is already exist else return no
+                                    //final String a1="Yes";
+                                    final String a1=feedback1;
+                                    Log.d("A1", a1);
+                                    //final String a1="Yes";
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            if(a1!=null)
+                                            {
+                                                if(a1.toString().equals("No"))
+                                                {
+                                                    // user is not exist then build profile of user
+
+                                                    Intent sendDataIntent = new Intent(WelcomeActivity.this, Registration.class);
+                                                    sendDataIntent.putExtra(P_NAME, name[0]);
+                                                    sendDataIntent.putExtra(P_EMAIL, email);
+                                                    // sendDataIntent.putExtra(P_DOB, dob);
+                                                    sendDataIntent.putExtra(P_GENDER, gender);
+                                                    sendDataIntent.putExtra(P_PHOTOURL, finalDpUrl);
+
+                                                    sendDataIntent.putExtra(GPLUSFALSE, "FALSE");
+                                                    sendDataIntent.putExtra(FBTRUE, "TRUE");
+                                                    Toast.makeText(getApplicationContext(),"You are new user",Toast.LENGTH_LONG).show();
+                                                    startActivity(sendDataIntent);
+                                                    Log.d("a1 is No", "senDataIntent is for No");
+                                                    finish();
+                                                }else if(a1.toString().equals("Yes"))
+                                                {
+                                                    //  Yes user is already exist
+
+                                                    Intent sendDataIntent = new Intent(WelcomeActivity.this, WelcomeScreenLogin.class);
+                                                    sendDataIntent.putExtra("uname", name[0]);
+                                                    sendDataIntent.putExtra(P_EMAIL, email);
+                                                    // sendDataIntent.putExtra(P_DOB, dob);                                                Toast.makeText(getApplicationContext(),"Feedback from Server= "+ a1.toString(),Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getApplicationContext(),"You are existing user",Toast.LENGTH_LONG).show();
+                                                    sendDataIntent.putExtra("bImage", finalDpUrl);
+
+                                                    sendDataIntent.putExtra(P_GENDER, gender);
+
+                                                    sendDataIntent.putExtra(GPLUSFALSE, "FALSE");
+                                                    sendDataIntent.putExtra(FBTRUE, "TRUE");
+
+                                                    Log.d("a1 is Yes", "senDataIntent is for Yes");
+                                                    startActivity(sendDataIntent);
+                                                    finish();
+                                                }
+                                            }
+                                        }
+                                    });
+
+                                }catch(Exception e)
+                                {
+                                    Log.d("Exception",e.toString());
+                                    System.out.println("Conection Pasing Excpetion = " + e);
+                                    Log.e("Error= ", Log.getStackTraceString(e));
+                                }
+
+                                        }
+
+                        }).start();
+
+
+                        finish();
           }
 
                 } catch (JSONException e) {
@@ -414,7 +556,7 @@ protected void initializeFacebookSDK(){
             }
         });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,link,email,picture, gender, birthday");
+        parameters.putString("fields", "id,name,link,email,picture, gender");
         request.setParameters(parameters);
         request.executeAsync();
     }
@@ -442,9 +584,6 @@ protected void initializeFacebookSDK(){
             Toast.makeText(this, "Connected!", Toast.LENGTH_SHORT).show();
 
         }
-
-
-
 
         //fb
         //super.onActivityResult(requestCode, resultCode, data);
@@ -478,11 +617,13 @@ protected void initializeFacebookSDK(){
 
     public void setUserInformation(Person person, GoogleSignInAccount googleSignInAccount) {
         try{
-            String name, dpUrl, email, dob, gender = "";
-            Intent sendDataIntent = new Intent(WelcomeActivity.this, WelcomeScreen.class);
+            String name, dpUrl, email,  gender = "";
+            Intent sendDataIntent = new Intent(WelcomeActivity.this, Registration.class);
+            SharedPreferences.Editor editor=sharedPreferences.edit();
             name = googleSignInAccount.getDisplayName();
+            editor.putString("username",name);
             email = googleSignInAccount.getEmail();
-            dob = person.getBirthday();
+           // dob = person.getBirthday();
             if(person.getGender() == 0){
                 gender = "Male";
                 sendDataIntent.putExtra(P_GENDER, gender);
@@ -495,12 +636,13 @@ protected void initializeFacebookSDK(){
 
             sendDataIntent.putExtra(P_NAME, name);
             sendDataIntent.putExtra(P_EMAIL, email);
-            sendDataIntent.putExtra(P_DOB, dob);
+            //sendDataIntent.putExtra(P_DOB, dob);
             sendDataIntent.putExtra(P_GENDER, gender);
             sendDataIntent.putExtra(P_PHOTOURL, dpUrl);
             sendDataIntent.putExtra(GPLUSTRUE,"TRUE");
             sendDataIntent.putExtra(FBFALSE, "FALSE");
             startActivity(sendDataIntent);
+            finish();
 
         }
         catch (Exception exception){

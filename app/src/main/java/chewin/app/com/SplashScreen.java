@@ -11,17 +11,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity { //Starting screen splashscreen display
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash_screen);  //Set view activity_splash_screen
 
-
+        //Define and initialize widget value
         final ImageView imgView = (ImageView)findViewById(R.id.imageView);
         final TextView txtMt = (TextView) findViewById(R.id.txtMoto);
+
+        //Define Animation
         final Animation slideLeft = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.right_to_left);
         //slideLeft.setAnimationListener(this);
@@ -29,10 +31,11 @@ public class SplashScreen extends AppCompatActivity {
                 R.anim.left_to_right);
         //slideRight.setAnimationListener(this);
 
-
+        //Start Animation effect
         imgView.startAnimation(slideRight);
         txtMt.startAnimation(slideLeft);
 
+        //Call and intent to next activity (WelcomeActivity)
         slideRight.setAnimationListener(new AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -59,32 +62,5 @@ public class SplashScreen extends AppCompatActivity {
           //      R.anim.animation_leave);
     }
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        imgView.setVisibility(View.VISIBLE);
-        imgView.startAnimation(slideRight);
-        txtMt.setVisibility(View.VISIBLE);
-        txtMt.startAnimation(slideLeft);
 
-    }
-
-    @Override
-    public void onAnimationStart(Animation animation) {
-
-    }
-
-    @Override
-    public void onAnimationEnd(Animation animation) {
-
-        finish();
-        Intent intent = new Intent(getBaseContext(), WelcomeActivity.class);
-        startActivity(intent);
-
-    }
-
-    @Override
-    public void onAnimationRepeat(Animation animation) {
-
-    }*/
 }

@@ -6,40 +6,78 @@
 
 
     <SeekBar
+        android:layout_marginTop="35dp"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:id="@+id/seekBar"
-        android:layout_below="@+id/distancetv1"
+        android:layout_below="@+id/tv1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="83dp" />
+        android:layout_alignParentStart="true" />
 
     <SeekBar
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:id="@+id/seekBar2"
-        android:layout_below="@+id/noofrestaurant"
+        android:layout_below="@+id/tv2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="70dp" />
+        android:layout_marginTop="43dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Distance"
-        android:id="@+id/distancetv1"
+        android:id="@+id/tv1"
+        android:layout_marginTop="78dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp" />
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:fontFamily="cursive"
+        android:textColor="#000000"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Number of Restaurants"
-        android:id="@+id/noofrestaurant"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/tv2"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/displaydistance"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:fontFamily="cursive"
+        android:textColor="#000000"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/btsubmittab1"
+        android:layout_below="@+id/displaynoresta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="          0"
+        android:id="@+id/displaydistance"
+        android:layout_alignLeft="@+id/tv1"
+        android:layout_alignStart="@+id/tv1"
+        android:layout_below="@+id/seekBar"
+        android:layout_alignRight="@+id/btsubmittab1"
+        android:layout_alignEnd="@+id/btsubmittab1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="          0"
+        android:id="@+id/displaynoresta"
+        android:layout_alignLeft="@+id/displaydistance"
+        android:layout_alignStart="@+id/displaydistance"
+        android:layout_below="@+id/seekBar2" />
 
 </RelativeLayout>

@@ -95,18 +95,20 @@
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_button"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+           android:visibility="gone"
+           />
 
 
     <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:background="@null"
         android:text="@string/skip"
-        android:layout_gravity="bottom"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/sign_in_button"
         />
 
     <!--</LinearLayout>-->

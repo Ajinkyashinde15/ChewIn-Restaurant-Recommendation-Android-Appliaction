@@ -7,20 +7,20 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="278dp"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_y="80dp"/>
+        android:layout_y="05dp"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="400dp"
         android:layout_x="3dp"
-        android:layout_y="318dp"
+        android:layout_y="285dp"
         android:weightSum="1">
         <ListView android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="398dp"
             android:id="@+id/mainListView"
             android:divider="#595559"
             android:dividerHeight="05dp"
@@ -30,11 +30,4 @@
 
     </LinearLayout>
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchView"
-        android:layout_x="-1dp"
-        android:layout_y="30dp"
-        android:queryHint="Search Cuisine" />
 </AbsoluteLayout>
